@@ -1,0 +1,150 @@
+
+body {background-color: black;}
+
+h1 {
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 10%; right: 0; left: 0;
+}
+
+/* --------------------------- ALIGNMENT --------------------------- */
+
+.all {
+    position: absolute;
+    top: 0; bottom: 0; right: 0; left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first, .second {
+    position: relative;
+    margin: auto 15% auto 15%;
+    height: 200px;
+    width: 200px;
+}
+
+/* -------------------------- GRIDS TO HOVER ----------------------- */
+
+.grid {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+
+  width: 200px;
+  height: 200px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  perspective: 260px;
+}
+
+.layout {
+  width: 1fr;
+  height: 1fr;
+  z-index: 1;
+}
+
+/* ----------------------------- CUBES ----------------------------- */
+
+.cube1, .cube2, .cube3 {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+
+  transform: translateZ(-100px) rotate3d(0, 0, 0, 360deg);
+  transform-style: preserve-3d;
+  transition: transform 2s;
+}
+
+/* ------------------------- FACES GENERAL -------------------------- */
+
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+
+/* ------------------------- FACES SPECIFIC -------------------------- */
+
+.front {
+  background: hsla(0, 100%, 50%, 0.8);
+  transform: rotateY(0deg) translateZ(100px);
+  box-shadow: 0 0 80px rgba(255, 0, 0, 0.7);
+}
+
+.right {
+  background: hsla(60, 100%, 50%, 0.8);
+  transform: rotateY(90deg) translateZ(100px);
+  box-shadow: 0 0 80px rgba(255, 255, 0, 0.7);
+}
+
+.back {
+  background: hsla(120, 100%, 50%, 0.8);
+  transform: rotateY(180deg) translateZ(100px);
+  box-shadow: 0 0 80px rgba(0, 255, 0, 0.7);
+}
+
+.left {
+  background: hsla(180, 100%, 50%, 0.8);
+  transform: rotateY(-90deg) translateZ(100px);
+  box-shadow: 0 0 80px rgba(0, 255, 255, 0.7);
+}
+
+.top {
+  background: hsla(240, 100%, 50%, 0.8);
+  transform: rotateX(90deg) translateZ(100px);
+  box-shadow: 0 0 80px rgba(0, 0, 255, 0.7);
+}
+
+.bottom {
+  background: hsla(300, 100%, 50%, 0.8);
+  transform: rotateX(-90deg) translateZ(100px);
+  box-shadow: 0 0 80px rgba(255, 0, 255, 0.7);
+}
+
+/* ------------------------ LEFT CUBE ANIMATION -------------------------- */
+
+.grid-1-1:hover ~ .cube1 {animation: spinupleft 2s infinite linear;}
+.grid-1-2:hover ~ .cube1 {animation: spinup 2s infinite linear;}
+.grid-1-3:hover ~ .cube1 {animation: spinupright 2s infinite linear;}
+.grid-1-4:hover ~ .cube1 {animation: spinleft 2s infinite linear;}
+.grid-1-6:hover ~ .cube1 {animation: spinright 2s infinite linear;}
+.grid-1-7:hover ~ .cube1 {animation: spindownleft 2s infinite linear;}
+.grid-1-8:hover ~ .cube1 {animation: spindown 2s infinite linear;}
+.grid-1-9:hover ~ .cube1 {animation: spindownright 2s infinite linear;}
+
+@keyframes spinupleft     {100% {transform: translateZ(-100px) rotate3d(1, -1, 0, 360deg);}}
+@keyframes spinup         {100% {transform: translateZ(-100px) rotateX(360deg) rotateY(0deg);}}
+@keyframes spinupright    {100% {transform: translateZ(-100px) rotate3d(1, 1, 0, 360deg);}}
+@keyframes spinleft       {100% {transform: translateZ(-100px) rotateX(0deg) rotateY(-360deg);}}
+@keyframes spinright      {100% {transform: translateZ(-100px) rotateX(0deg) rotateY(360deg);}}
+@keyframes spindownleft   {100% {transform: translateZ(-100px) rotate3d(-1, -1, 0, 360deg);}}
+@keyframes spindown       {100% {transform: translateZ(-100px) rotateX(-360deg) rotateY(0deg);}}
+@keyframes spindownright  {100% {transform: translateZ(-100px) rotate3d(-1, 1, 0, 360deg);}}
+
+/* ------------------------ RIGHT CUBE TRANSITION -------------------------- */
+
+.grid-2-1:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(1, -1, 0, 360deg);}
+.grid-2-2:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(1, 0, 0, 360deg);}
+.grid-2-3:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(1, 1, 0, 360deg);}
+.grid-2-4:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(0, -1, 0, 360deg);}
+.grid-2-6:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(0, 1, 0, 360deg);}
+.grid-2-7:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(-1, -1, 0, 360deg);}
+.grid-2-8:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(-1, 0, 0, 360deg);}
+.grid-2-9:hover ~ .cube2 {transform: translateZ(-100px) rotate3d(-1, 1, 0, 360deg);}
+
+/* ------------------------ ROTATE MIDDLE CUBE -------------------------- */
+
+.cube3:hover {
+    animation: spin 4s infinite linear;
+    animation-delay: 2s;
+    transform: translateZ(0px);
+}
+
+@keyframes spin {100% {transform: translateZ(0px) rotate3d(3, 1, 1, 360deg);}}
+
+
